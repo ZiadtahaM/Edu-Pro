@@ -1,0 +1,51 @@
+{
+  "info": {
+    "_postman_id": "c7b8e4a6-1e56-4c2e-9a0d-edupro-portal",
+    "name": "Edu-Pro REST Contract",
+    "description": "Importable contract collection for users, mentors, and categories. Set the environment variables before running.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "apiBaseUrl", "value": "http://localhost:3000" },
+    { "key": "authToken", "value": "" },
+    { "key": "userId", "value": "replace-user-id" },
+    { "key": "mentorId", "value": "replace-mentor-id" },
+    { "key": "categoryId", "value": "replace-category-id" },
+    { "key": "page", "value": "1" },
+    { "key": "limit", "value": "20" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{authToken}}", "type": "string" }]
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        { "name": "List users - bounded page", "request": { "method": "GET", "header": [], "url": { "raw": "{{apiBaseUrl}}/users?page={{page}}&limit={{limit}}", "host": ["{{apiBaseUrl}}"], "path": ["users"], "query": [{ "key": "page", "value": "{{page}}" }, { "key": "limit", "value": "{{limit}}" }] } } },
+        { "name": "List users - specialization filter", "request": { "method": "GET", "header": [], "url": { "raw": "{{apiBaseUrl}}/users?specializationId={{categoryId}}&page=1&limit=20", "host": ["{{apiBaseUrl}}"], "path": ["users"], "query": [{ "key": "specializationId", "value": "{{categoryId}}" }, { "key": "page", "value": "1" }, { "key": "limit", "value": "20" }] } } },
+        { "name": "Update user", "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"fullName\": \"Ada Lovelace\",\n  \"bio\": \"Exploring applied systems thinking.\",\n  \"specializationIds\": [\"{{categoryId}}\"]\n}" }, "url": { "raw": "{{apiBaseUrl}}/users/{{userId}}", "host": ["{{apiBaseUrl}}"], "path": ["users", "{{userId}}"] } } },
+        { "name": "Assign specializations", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"categoryIds\": [\"{{categoryId}}\"]\n}" }, "url": { "raw": "{{apiBaseUrl}}/users/{{userId}}/assign-specialization", "host": ["{{apiBaseUrl}}", "users", "{{userId}}", "assign-specialization"] } } },
+        { "name": "Error - invalid user page", "request": { "method": "GET", "header": [], "url": { "raw": "{{apiBaseUrl}}/users?page=0&limit=101", "host": ["{{apiBaseUrl}}"], "path": ["users"], "query": [{ "key": "page", "value": "0" }, { "key": "limit", "value": "101" }] } } }
+      ]
+    },
+    {
+      "name": "Mentors",
+      "item": [
+        { "name": "List mentors - bounded page", "request": { "method": "GET", "header": [], "url": { "raw": "{{apiBaseUrl}}/mentors?specialization=systems&page={{page}}&limit={{limit}}", "host": ["{{apiBaseUrl}}"], "path": ["mentors"], "query": [{ "key": "specialization", "value": "systems" }, { "key": "page", "value": "{{page}}" }, { "key": "limit", "value": "{{limit}}" }] } } },
+        { "name": "Get mentor", "request": { "method": "GET", "header": [], "url": { "raw": "{{apiBaseUrl}}/mentors/{{mentorId}}", "host": ["{{apiBaseUrl}}"], "path": ["mentors", "{{mentorId}}"] } } },
+        { "name": "Create mentor", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Grace Hopper\",\n  \"email\": \"grace@example.com\",\n  \"specializations\": [\"systems\", \"leadership\"],\n  \"experienceYears\": 12,\n  \"bio\": \"Designing clear systems from complex questions.\"\n}" }, "url": { "raw": "{{apiBaseUrl}}/mentors", "host": ["{{apiBaseUrl}}"], "path": ["mentors"] } } },
+        { "name": "Error - invalid mentor payload", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"name\": \"\",\n  \"email\": \"not-an-email\"\n}" }, "url": { "raw": "{{apiBaseUrl}}/mentors", "host": ["{{apiBaseUrl}}"], "path": ["mentors"] } } }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        { "name": "List categories", "request": { "method": "GET", "header": [], "url": { "raw": "{{apiBaseUrl}}/categories", "host": ["{{apiBaseUrl}}"], "path": ["categories"] } } },
+        { "name": "Get category", "request": { "method": "GET", "header": [], "url": { "raw": "{{apiBaseUrl}}/categories/{{categoryId}}", "host": ["{{apiBaseUrl}}"], "path": ["categories", "{{categoryId}}"] } } },
+        { "name": "Create category", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Systems thinking\",\n  \"isActive\": true,\n  \"mentorIds\": [\"{{mentorId}}\"]\n}" }, "url": { "raw": "{{apiBaseUrl}}/categories", "host": ["{{apiBaseUrl}}", "categories"] } } },
+        { "name": "Error - invalid category payload", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"name\": \"\"\n}" }, "url": { "raw": "{{apiBaseUrl}}/categories", "host": ["{{apiBaseUrl}}"], "path": ["categories"] } } }
+      ]
+    }
+  ]
+}
