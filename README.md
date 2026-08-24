@@ -1,8 +1,9 @@
-﻿<div align="center">
+<div align="center">
 
 # 🎓 Edu-Pro Portal
 ### *A Considered, Next-Generation Mentorship & Learning Platform*
 
+[![Cloudflare Pages](https://img.shields.io/badge/Live_Demo-edu--pro--portal.pages.dev-F38020?style=for-the-badge&logo=cloudflarepages&logoColor=white)](https://edu-pro-portal.pages.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19.1+-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-7.1+-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -10,13 +11,12 @@
 [![tRPC](https://img.shields.io/badge/tRPC-v11-2596BE?style=for-the-badge&logo=trpc&logoColor=white)](https://trpc.io/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Drizzle ORM](https://img.shields.io/badge/Drizzle_ORM-0.44+-C5F74F?style=for-the-badge&logo=drizzle&logoColor=black)](https://orm.drizzle.team/)
-[![Cloudflare](https://img.shields.io/badge/Cloudflare-Pages%20Ready-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
 
 <p align="center">
   <b>Edu-Pro</b> transforms career curiosity into tangible momentum. Designed around an editorial dark navy and warm gold aesthetic, it bridges curious learners with vetted mentors, curated subject pathways, and an AI-driven learning guide.
 </p>
 
-[✨ Live Features](#-key-features) • [🏛 Architecture](#-system-architecture) • [🚀 Quick Start](#-quick-start) • [☁️ Cloudflare Deploy](#-cloudflare-deployment) • [📡 API Reference](#-api--trpc-contract-matrix)
+[🌐 Live Demo](https://edu-pro-portal.pages.dev) • [✨ Features](#-key-features) • [🏛 Architecture](#-system-architecture) • [🚀 Quick Start](#-quick-start) • [☁️ Cloudflare Deploy](#-cloudflare-deployment) • [📡 API Reference](#-api--trpc-contract-matrix)
 
 ---
 
